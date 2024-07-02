@@ -181,6 +181,29 @@ background-color: rgba(0, 0, 0, 0);
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
+################################################
+
+st.set_page_config(layout="wide")
+# Custom HTML/CSS for the banner
+custom_html = """
+<div class="banner">
+    <img src="https://www.freewebheaders.com/wp-content/gallery/machu-picchu/ancient-city-machu-picchu-of-peru-website-header.jpg" alt="Banner Image">
+</div>
+<style>
+    .banner {
+        width: 160%;
+        height: 200px;
+        overflow: hidden;
+    }
+    .banner img {
+        width: 100%;
+        object-fit: cover;
+    }
+</style>
+"""
+# Display the custom HTML
+st.components.v1.html(custom_html)
+
 ########### TÍTULO #############
 
 st.image('machu_picchu_header.jpg')
