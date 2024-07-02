@@ -247,97 +247,110 @@ st.markdown(
 ################# boton para seleccionar la VARIEDAD #################
 
 st.header('Seleccione la variedad del quechua', divider='rainbow')
-variedad = st.selectbox("Seleccione la variedad del quechua:", ["Ayacucho", "Cuzco", "Ancash"])
 
+col1, col2, col3 = st.columns(3)
+with col1:
+    if st.button("Ayacucho"):
+        variedad = "Ayacucho"
+with col2:
+    if st.button("Cuzco"):
+        variedad = "Cuzco"
+with col3:
+    if st.button("Ancash"):
+        variedad = "Ancash"
+
+if 'variedad' not in locals():
+    st.warning("Por favor, seleccione una variedad del quechua.")
+else:
 ########### menú desplegable para seleccionar VERBOS #################
 
-st.header('Verbo', divider='rainbow')
-
-base = st.selectbox(
-    "Seleccione un verbo en quechua: ",
-    quechua)
-
-st.write("Seleccionaste: ", dict_que_esp[base])
-
-if base.endswith('y'):
-    base = base[:-1]
+    st.header('Verbo', divider='rainbow')
+    
+    base = st.selectbox(
+        "Seleccione un verbo en quechua: ",
+        quechua)
+    
+    st.write("Seleccionaste: ", dict_que_esp[base])
+    
+    if base.endswith('y'):
+        base = base[:-1]
 
 ############## menú desplegable para seleccionar NUMERO ##############
 
-st.header('Número', divider='rainbow')
-
-numero = st.radio(
-    "Seleccione un número: ",
-    ["singular","plural"],
-    index=0,
-)
+    st.header('Número', divider='rainbow')
+    
+    numero = st.radio(
+        "Seleccione un número: ",
+        ["singular","plural"],
+        index=0,
+    )
 
 #st.write("Seleccionaste: ", numero)
 
 # Diccionario de explicaciones
-explicaciones_persona = {
-    "primera inclusiva": "La primera persona inclusiva se refiere a 'nosotros', incluyendo a la persona con la que se habla.",
-    "primera exclusiva": "La primera persona exclusiva se refiere a 'nosotros', excluyendo a la persona con la que se habla.",
-    "segunda": "La segunda persona se refiere a 'tú' o 'usted'.",
-    "tercera": "La tercera persona se refiere a 'él', 'ella' o 'ellos'."
-}
-
-explicaciones_tiempo = {
-    "presente 1": "El presente 1 es el presente simple. Este se usa para describir acciones que ocurren regularmente a lo largo del tiempo.",
-    "presente 2": "El presente 2 es el presente progresivo. Este se usa para describir acciones que están ocurriendo en este momento.",
-    "presente 3": "El presente 3 es el presente habitual. Este se usa para describir acciones que se repiten en el tiempo de manera finita, como hábitos o rutinas.",
-    "pasado experimentado 1": "El pasado experimentado 1 es el pasado experimentado simple. Este se usa para describir acciones que ocurrieron en el pasado y que le constan al sujeto por ser testigo directo de la acción.",
-    "pasado experimentado 2": "El pasado experimentado 2 es el pasado experimentado progresivo. Este se usa para describir acciones que estuvieron ocurriendo en el pasado y que le constan al sujeto por ser testigo directo de la acción.",
-    "pasado experimentado 3": "El pasado experimentado 3 es el pasado experimentado habitual. Este se usa para describir acciones que ocurrían regularmente en el pasado y que le constan al sujeto por ser testigo directo de la acción.",
-    "pasado no experimentado 1": "El pasado no experimentado 1 es el pasado no experimentado simple. Este se usa para describir acciones que ocurrieron en el pasado sin la participación o el conocimiento directo del sujeto.",
-    "pasado no experimentado 2": "El pasado no experimentado 2 es el pasado no experimentado progresivo. Este se usa para describir acciones que estuvieron ocurriendo en el pasado sin la participación o el conocimiento directo del sujeto.",
-    "pasado no experimentado 3": "El pasado no experimentado 3 es el pasado no experimentado habitual. Este se usa para describir acciones que ocurrían regularmente en el pasado sin la participación o el conocimiento directo del sujeto."
-}
+    explicaciones_persona = {
+        "primera inclusiva": "La primera persona inclusiva se refiere a 'nosotros', incluyendo a la persona con la que se habla.",
+        "primera exclusiva": "La primera persona exclusiva se refiere a 'nosotros', excluyendo a la persona con la que se habla.",
+        "segunda": "La segunda persona se refiere a 'tú' o 'usted'.",
+        "tercera": "La tercera persona se refiere a 'él', 'ella' o 'ellos'."
+    }
+    
+    explicaciones_tiempo = {
+        "presente 1": "El presente 1 es el presente simple. Este se usa para describir acciones que ocurren regularmente a lo largo del tiempo.",
+        "presente 2": "El presente 2 es el presente progresivo. Este se usa para describir acciones que están ocurriendo en este momento.",
+        "presente 3": "El presente 3 es el presente habitual. Este se usa para describir acciones que se repiten en el tiempo de manera finita, como hábitos o rutinas.",
+        "pasado experimentado 1": "El pasado experimentado 1 es el pasado experimentado simple. Este se usa para describir acciones que ocurrieron en el pasado y que le constan al sujeto por ser testigo directo de la acción.",
+        "pasado experimentado 2": "El pasado experimentado 2 es el pasado experimentado progresivo. Este se usa para describir acciones que estuvieron ocurriendo en el pasado y que le constan al sujeto por ser testigo directo de la acción.",
+        "pasado experimentado 3": "El pasado experimentado 3 es el pasado experimentado habitual. Este se usa para describir acciones que ocurrían regularmente en el pasado y que le constan al sujeto por ser testigo directo de la acción.",
+        "pasado no experimentado 1": "El pasado no experimentado 1 es el pasado no experimentado simple. Este se usa para describir acciones que ocurrieron en el pasado sin la participación o el conocimiento directo del sujeto.",
+        "pasado no experimentado 2": "El pasado no experimentado 2 es el pasado no experimentado progresivo. Este se usa para describir acciones que estuvieron ocurriendo en el pasado sin la participación o el conocimiento directo del sujeto.",
+        "pasado no experimentado 3": "El pasado no experimentado 3 es el pasado no experimentado habitual. Este se usa para describir acciones que ocurrían regularmente en el pasado sin la participación o el conocimiento directo del sujeto."
+    }
 
 ###### menú desplegable para seleccionar PERSONA ######
 
-st.header('Persona', divider='rainbow')
-
-persona = st.selectbox("Seleccione una persona: ", list(explicaciones_persona.keys()), index=0)
-explicacion_persona_placeholder = st.empty()
-explicaciones_persona["primera inclusiva"] += "<br><br>Ejemplo: '(Todos) Nosotros vamos al mercado.'"
-explicaciones_persona["primera exclusiva"] += "<br><br>Ejemplo: 'Nosotros (pero no tú) vamos al mercado.'"
-
-explicacion_persona_placeholder.markdown("**Explicación de persona seleccionada:** " + explicaciones_persona[persona], unsafe_allow_html=True)
+    st.header('Persona', divider='rainbow')
+    
+    persona = st.selectbox("Seleccione una persona: ", list(explicaciones_persona.keys()), index=0)
+    explicacion_persona_placeholder = st.empty()
+    explicaciones_persona["primera inclusiva"] += "<br><br>Ejemplo: '(Todos) Nosotros vamos al mercado.'"
+    explicaciones_persona["primera exclusiva"] += "<br><br>Ejemplo: 'Nosotros (pero no tú) vamos al mercado.'"
+    
+    explicacion_persona_placeholder.markdown("**Explicación de persona seleccionada:** " + explicaciones_persona[persona], unsafe_allow_html=True)
 
 
 #################### menú desplegable para seleccionar TIEMPO ###################
 
-st.header('Tiempo', divider='rainbow')
-
-st.markdown(
-    """
-    <style>
-    .justified-text {
-        text-align: justify;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-tiempo = st.selectbox("Seleccione un tiempo: ", list(explicaciones_tiempo.keys()), index=0)
-explicacion_tiempo_placeholder = st.empty()
-explicaciones_tiempo["presente 1"] += "<br><br>Ejemplo: 'Yo veo televisión.'"
-explicaciones_tiempo["presente 2"] += "<br><br>Ejemplo: 'Yo estoy viendo televisión.'"
-explicaciones_tiempo["presente 3"] += "<br><br>Ejemplo: 'Yo suelo ver televisión.'"
-explicaciones_tiempo["pasado experimentado 1"] += "<br><br>Ejemplo: 'Yo veía televisión.'"
-explicaciones_tiempo["pasado experimentado 2"] += "<br><br>Ejemplo: 'Yo estaba viendo televisión.'"
-explicaciones_tiempo["pasado experimentado 3"] += "<br><br>Ejemplo: 'Yo solía ver televisión.'"
-explicaciones_tiempo["pasado no experimentado 1"] += "<br><br>Ejemplo: '(Dicen que) Yo veía televisión.'"
-explicaciones_tiempo["pasado no experimentado 2"] += "<br><br>Ejemplo: '(Dicen que) Yo estaba viendo televisión.'"
-explicaciones_tiempo["pasado no experimentado 3"] += "<br><br>Ejemplo: '(Dicen que) Yo solía ver televisión.'"
-
-explicacion_tiempo_placeholder.markdown("**Explicación de tiempo seleccionado:** " + explicaciones_tiempo[tiempo], unsafe_allow_html=True)
+    st.header('Tiempo', divider='rainbow')
     
+    st.markdown(
+        """
+        <style>
+        .justified-text {
+            text-align: justify;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+    
+    tiempo = st.selectbox("Seleccione un tiempo: ", list(explicaciones_tiempo.keys()), index=0)
+    explicacion_tiempo_placeholder = st.empty()
+    explicaciones_tiempo["presente 1"] += "<br><br>Ejemplo: 'Yo veo televisión.'"
+    explicaciones_tiempo["presente 2"] += "<br><br>Ejemplo: 'Yo estoy viendo televisión.'"
+    explicaciones_tiempo["presente 3"] += "<br><br>Ejemplo: 'Yo suelo ver televisión.'"
+    explicaciones_tiempo["pasado experimentado 1"] += "<br><br>Ejemplo: 'Yo veía televisión.'"
+    explicaciones_tiempo["pasado experimentado 2"] += "<br><br>Ejemplo: 'Yo estaba viendo televisión.'"
+    explicaciones_tiempo["pasado experimentado 3"] += "<br><br>Ejemplo: 'Yo solía ver televisión.'"
+    explicaciones_tiempo["pasado no experimentado 1"] += "<br><br>Ejemplo: '(Dicen que) Yo veía televisión.'"
+    explicaciones_tiempo["pasado no experimentado 2"] += "<br><br>Ejemplo: '(Dicen que) Yo estaba viendo televisión.'"
+    explicaciones_tiempo["pasado no experimentado 3"] += "<br><br>Ejemplo: '(Dicen que) Yo solía ver televisión.'"
+    
+    explicacion_tiempo_placeholder.markdown("**Explicación de tiempo seleccionado:** " + explicaciones_tiempo[tiempo], unsafe_allow_html=True)
+        
 ############################# RESULTADO #######################################
 
-st.header('Resultado', divider='rainbow')
+    st.header('Resultado', divider='rainbow')
 
 #if base and numero and persona and tiempo:
 #    resultado = conj_final(base, numero, persona, tiempo)
@@ -349,15 +362,15 @@ st.header('Resultado', divider='rainbow')
     
 # Conjugar y mostrar el resultado según la variedad seleccionada
 
-if st.button("Conjugar"):
-    if variedad == "Ayacucho":
-        conjugacion = conj_final(base, numero, persona, tiempo)
-    elif variedad == "Cuzco":
-        conjugacion = conj_final_cuzco(base, numero, persona, tiempo)
-    elif variedad == "Ancash":
-        conjugacion = conj_final_ancash(base, numero, persona, tiempo)
+    if st.button("Conjugar"):
+        if variedad == "Ayacucho":
+            conjugacion = conj_final(base, numero, persona, tiempo)
+        elif variedad == "Cuzco":
+            conjugacion = conj_final_cuzco(base, numero, persona, tiempo)
+        elif variedad == "Ancash":
+            conjugacion = conj_final_ancash(base, numero, persona, tiempo)
 
-    if conjugacion:
-        st.success(f"La conjugación es: {conjugacion}")
-    else:
-        st.error("Hubo un error en la conjugación. Por favor, revise los parámetros seleccionados.")
+        if conjugacion:
+            st.write(f"La conjugación es: {conjugacion}")
+        else:
+            st.error("Hubo un error en la conjugación. Por favor, revise los parámetros seleccionados.")
