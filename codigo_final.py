@@ -135,7 +135,6 @@ afp.set_index(c[0], inplace=True)
 ap = afp.to_dict()
 
 def conj_final_ancash(base, numero, persona, tiempo):
-    # Validar claves y manejar valores 'nan'
     if numero not in ap:
         st.error(f"Clave '{numero}' no encontrada en el diccionario 'ap'.")
         return
@@ -151,25 +150,7 @@ def conj_final_ancash(base, numero, persona, tiempo):
     if persona not in A[tiempo][numero]:
         st.error(f"Clave '{persona}' no encontrada en el diccionario anidado dentro de 'A[{tiempo}][{numero}]'.")
         return
-    
-    sufijo_tiempo = A[tiempo][numero].get(persona, '')
-    if isinstance(sufijo_tiempo, float) and np.isnan(sufijo_tiempo):
-        sufijo_tiempo = ''
-    else:
-        sufijo_tiempo = str(sufijo_tiempo) if sufijo_tiempo != '' else ''
-    
-    pronombre = ap[numero][persona]
-    if isinstance(pronombre, float) and np.isnan(pronombre):
-        pronombre = ''
-    else:
-        pronombre = str(pronombre) if pronombre != '' else ''
-    
-    # Verificar si todos los valores son NaN en la hoja de tiempo y variedad seleccionada
-    if all((isinstance(val, float) and np.isnan(val)) or val == '' for val in A[tiempo][numero].values()):
-        st.warning(f"No existe conjugación para el tiempo '{tiempo}' en la variedad del quechua seleccionada.")
-        return None
-
-    return pronombre + ' ' + base + sufijo_tiempo
+    return ap[numero][persona] + ' ' + base + A[tiempo][numero][persona]
 
 ##########################################################################
 ##########################################################################
