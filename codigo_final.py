@@ -157,7 +157,24 @@ def conj_final_ancash(base, numero, persona, tiempo):
     if sufijo_tiempo == 'x':
         st.warning(f"No existe conjugación para el tiempo '{tiempo}' en la variedad del quechua seleccionada.")
         return None
-    return ap[numero][persona] + ' ' + base + A[tiempo][numero][persona]
+     
+    # Manejo de NaN y conversión a string
+    if isinstance(sufijo_tiempo, (float, np.floating)):
+        if np.isnan(sufijo_tiempo):
+            sufijo_tiempo = ''
+    else:
+        sufijo_tiempo = str(sufijo_tiempo) if sufijo_tiempo is not None else ''
+    
+    pronombre = ap[numero][persona]
+    
+    # Manejo de NaN y conversión a string
+    if isinstance(pronombre, (float, np.floating)):
+        if np.isnan(pronombre):
+            pronombre = ''
+    else:
+        pronombre = str(pronombre) if pronombre is not None else ''
+    
+    return pronombre + ' ' + base + sufijo_tiempo
 
 ##########################################################################
 ##########################################################################
