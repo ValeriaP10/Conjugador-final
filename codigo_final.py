@@ -133,7 +133,7 @@ c = afp.columns
 afp.set_index(c[0], inplace=True)           
 ap = afp.to_dict()
 
-def conj_final_ancash(base,numero,persona,tiempo):
+def conj_final_ancash(base, numero, persona, tiempo):
     if numero not in ap:
         st.error(f"Clave '{numero}' no encontrada en el diccionario 'ap'.")
         return
@@ -149,7 +149,9 @@ def conj_final_ancash(base,numero,persona,tiempo):
     if persona not in A[tiempo][numero]:
         st.error(f"Clave '{persona}' no encontrada en el diccionario anidado dentro de 'A[{tiempo}][{numero}]'.")
         return
-    return ap[numero][persona] + ' ' + base + A[tiempo][numero][persona]
+    
+    sufijo_tiempo = A[tiempo][numero][persona] or ''  # Usar string vacío si el sufijo es None
+    return ap[numero][persona] + ' ' + base + sufijo_tiempo
 
 ##########################################################################
 ##########################################################################
@@ -377,7 +379,7 @@ else:
         conjugacion = conj_final_ancash(base, numero, persona, tiempo)
 
     if conjugacion:
-        st.write("El verbo conjugado es: ")
+        st.write("La conjugación es: ")
         st.markdown(f'<p style="font-size:24px; text-align:center;">{conjugacion}</p>', unsafe_allow_html=True)
     else:
         st.error("Hubo un error en la conjugación. Por favor, revise los parámetros seleccionados.")
