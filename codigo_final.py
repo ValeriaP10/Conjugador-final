@@ -246,14 +246,12 @@ st.markdown(
 
 ################# boton para seleccionar la VARIEDAD #################
 
-st.header('Seleccione la variedad del quechua', divider='violet')
-
 # Inicializar session_state
 if 'variedad' not in st.session_state:
     st.session_state['variedad'] = None
 
 # Selección de la variedad del quechua
-st.header('Seleccione la variedad del quechua', divider='rainbow')
+st.header('Seleccione la variedad del quechua', divider='violet')
 
 col1, col2, col3 = st.columns(3)
 with col1:
