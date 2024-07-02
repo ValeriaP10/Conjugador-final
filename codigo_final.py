@@ -135,22 +135,34 @@ afp.set_index(c[0], inplace=True)
 ap = afp.to_dict()
 
 def conj_final_ancash(base, numero, persona, tiempo):
+    # Validar claves y manejar valores 'nan'
     if numero not in ap:
         st.error(f"Clave '{numero}' no encontrada en el diccionario 'ap'.")
         return
     if persona not in ap[numero]:
         st.error(f"Clave '{persona}' no encontrada en el diccionario anidado dentro de 'ap[{numero}]'.")
         return
-    if tiempo not in A:
-        st.error(f"Clave '{tiempo}' no encontrada en el diccionario 'A'.")
-        return
-    if numero not in A[tiempo]:
-        st.error(f"Clave '{numero}' no encontrada en el diccionario anidado dentro de 'A[{tiempo}]'.")
-        return
-    if persona not in A[tiempo][numero]:
-        st.error(f"Clave '{persona}' no encontrada en el diccionario anidado dentro de 'A[{tiempo}][{numero}]'.")
-        return
-    return ap[numero][persona] + ' ' + base + A[tiempo][numero][persona]
+    
+    # Obtener el sufijo de tiempo
+    sufijo_tiempo = A.get(tiempo, {}).get(numero, {}).get(persona, '')
+    
+    if isinstance(sufijo_tiempo, float) and np.isnan(sufijo_tiempo):
+        sufijo_tiempo = ''
+    else:
+        sufijo_tiempo = str(sufijo_tiempo) if sufijo_tiempo != '' else ''
+    
+    pronombre = ap[numero][persona]
+    if isinstance(pronombre, float) and np.isnan(pronombre):
+        pronombre = ''
+    else:
+        pronombre = str(pronombre) if pronombre != '' else ''
+    
+    # Verificar si el tiempo no está presente en el diccionario
+    if tiempo not in A or not A[tiempo].get(numero, {}).get(persona):
+        st.warning(f"No existe conjugación para el tiempo '{tiempo}' en la variedad del quechua seleccionada.")
+        return None
+
+    return pronombre + ' ' + base + sufijo_tiempo
 
 ##########################################################################
 ##########################################################################
