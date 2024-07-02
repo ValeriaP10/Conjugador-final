@@ -150,7 +150,10 @@ def conj_final_ancash(base, numero, persona, tiempo):
         st.error(f"Clave '{persona}' no encontrada en el diccionario anidado dentro de 'A[{tiempo}][{numero}]'.")
         return
     
-    sufijo_tiempo = A[tiempo][numero][persona] or ''  # Usar string vacío si el sufijo es None
+    sufijo_tiempo = A[tiempo][numero].get(persona, '')
+    if sufijo_tiempo is None:
+        sufijo_tiempo = ''
+    
     return ap[numero][persona] + ' ' + base + sufijo_tiempo
 
 ##########################################################################
