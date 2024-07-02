@@ -249,6 +249,7 @@ st.markdown(
 st.header('Seleccione la variedad del quechua', divider='violet')
 
 col1, col2, col3 = st.columns(3)
+variedad = None
 with col1:
     if st.button("Ayacucho"):
         variedad = "Ayacucho"
@@ -259,7 +260,7 @@ with col3:
     if st.button("Ancash"):
         variedad = "Ancash"
 
-if 'variedad' not in locals():
+if not variedad:
     st.warning("Por favor, seleccione una variedad del quechua.")
 else:
 ########### menú desplegable para seleccionar VERBOS #################
