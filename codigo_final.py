@@ -181,21 +181,6 @@ background-color: rgba(0, 0, 0, 0);
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
-#page_bg_img = """
-#<style>
-#[data-testid="stAppViewContainer"] {
-#background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCVYk_ZdjOviMt9YFiLlMd-h7yHzYzakEhLw&s);
-#bacground-size: cover;
-#}
-
-#[data-testid="stHeader"] {
-#background-color: rgba(0, 0, 0, 0);
-#}
-#</style>
-#"""
-
-#st.markdown(page_bg_img, unsafe_allow_html=True)
-
 ########### TÍTULO #############
 
 #st.title(':violet[Conjugador de verbos en quechua]')
@@ -217,10 +202,6 @@ st.markdown(
 )
 
 ########### INTRODUCCIÓN #############
-
-#container = st.container(border=True)
-#container.write("Esta página web tiene el objetivo de crear conjugaciones de los verbos quechuas más comunes. Al seleccionar un verbo, un número, una persona y un tiempo, se podrá obtener la forma conjugada de dicho verbo con los sufijos correspondientes. Se ofrecen también explicaciones para algunos conceptos de persona y tiempo verbal que pueden resultar confusos. ¡Anímate a conocer más sobre el quechua! 😄")
-#st.write("*La variedad de la lengua usada en esta página web es el quechua chanca, hablado en la región de Ayacucho, Perú.")
 
 st.markdown(
     """
@@ -253,6 +234,7 @@ st.markdown(
 )
 
 # Texto fuera del contenedor con márgenes ajustados
+
 st.markdown(
     """
     <p class="outside-text">
@@ -293,7 +275,12 @@ st.image(image, caption='Arco de Ayacucho', use_column_width=False, width=200)
 st.markdown("""
     <img src="{ruta_imagen_local}" class="centered-image">
     """, unsafe_allow_html=True)
-    
+
+################# boton para seleccionar la VARIEDAD #################
+
+st.header('Seleccione la variedad del quechua', divider='rainbow')
+variedad = st.selectbox("Seleccione la variedad del quechua:", ["Ayacucho", "Cuzco", "Ancash"])
+
 ########### menú desplegable para seleccionar VERBOS #################
 
 st.header('Verbo', divider='rainbow')
@@ -343,14 +330,6 @@ explicaciones_tiempo = {
 
 st.header('Persona', divider='rainbow')
 
-#persona = st.radio(
-    #"Seleccione una persona: ",
-    #["primera inclusiva","primera exclusiva","segunda","tercera"],
-    #index=0,
-#)
-    
-#st.write("Seleccionaste: ", persona)
-
 persona = st.selectbox("Seleccione una persona: ", list(explicaciones_persona.keys()), index=0)
 explicacion_persona_placeholder = st.empty()
 explicaciones_persona["primera inclusiva"] += "<br><br>Ejemplo: '(Todos) Nosotros vamos al mercado.'"
@@ -362,14 +341,6 @@ explicacion_persona_placeholder.markdown("**Explicación de persona seleccionada
 #################### menú desplegable para seleccionar TIEMPO ###################
 
 st.header('Tiempo', divider='rainbow')
-
-#tiempo = st.radio(
-    #"Seleccione un tiempo: ",
-    #["presente 1","presente 2","presente 3","pasado experimentado 1","pasado experimentado 2","pasado experimentado 3","pasado no experimentado 1","pasado no experimentado 2","pasado no experimentado 3"],
-    #index=0,
-#)
-
-#st.write("Seleccionaste: ", tiempo)
 
 st.markdown(
     """
@@ -396,31 +367,29 @@ explicaciones_tiempo["pasado no experimentado 3"] += "<br><br>Ejemplo: '(Dicen q
 
 explicacion_tiempo_placeholder.markdown("**Explicación de tiempo seleccionado:** " + explicaciones_tiempo[tiempo], unsafe_allow_html=True)
     
-#resultado = conj_final(base,numero,persona,tiempo)
-#st.write("El verbo conjugado es: ", resultado)
-
-#resultado = conj_final(base, numero, persona, tiempo)
-#if resultado:
-    #st.write("El verbo conjugado es: ", resultado)
-
-# Mostrar explicaciones
-#st.write("### Explicaciones")
-#explicacion_persona = st.selectbox("Seleccione una persona para ver la explicación:", list(explicaciones_persona.keys()))
-#explicacion_tiempo = st.selectbox("Seleccione un tiempo para ver la explicación:", list(explicaciones_tiempo.keys()))
-
-#st.write("Explicación de la persona seleccionada: ", explicaciones_persona[explicacion_persona])
-#st.write("Explicación del tiempo seleccionado: ", explicaciones_tiempo[explicacion_tiempo])
-
-################## RESULTADO ####################
+############################# RESULTADO #######################################
 
 st.header('Resultado', divider='rainbow')
 
-#st.markdown('<p class="big-font">Hello World !!</p>', unsafe_allow_html=True)
+#if base and numero and persona and tiempo:
+#    resultado = conj_final(base, numero, persona, tiempo)
+#    if resultado:
+#        st.write("El verbo conjugado es: ")
+#        st.markdown(f'<p style="font-size:24px; text-align:center;">{resultado}</p>', unsafe_allow_html=True)
+#else:
+#    st.error("Por favor, asegúrese de que todas las opciones estén seleccionadas.")
+    
+# Conjugar y mostrar el resultado según la variedad seleccionada
 
-if base and numero and persona and tiempo:
-    resultado = conj_final(base, numero, persona, tiempo)
-    if resultado:
-        st.write("El verbo conjugado es: ")
-        st.markdown(f'<p style="font-size:24px; text-align:center;">{resultado}</p>', unsafe_allow_html=True)
-else:
-    st.error("Por favor, asegúrese de que todas las opciones estén seleccionadas.")
+if st.button("Conjugar"):
+    if variedad == "Ayacucho":
+        conjugacion = conj_final(base, numero, persona, tiempo)
+    elif variedad == "Cuzco":
+        conjugacion = conj_final_cuzco(base, numero, persona, tiempo)
+    elif variedad == "Ancash":
+        conjugacion = conj_final_ancash(base, numero, persona, tiempo)
+
+    if conjugacion:
+        st.success(f"La conjugación es: {conjugacion}")
+    else:
+        st.error("Hubo un error en la conjugación. Por favor, revise los parámetros seleccionados.")
