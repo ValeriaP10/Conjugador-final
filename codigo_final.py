@@ -244,38 +244,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
-from PIL import Image
-
-# Ruta de la imagen local
-ruta_imagen_local = "arco-ayacucho.jpg"
-
-# Abre la imagen
-image = Image.open(ruta_imagen_local)
-
-# CSS para centrar la imagen
-st.markdown(
-    """
-    <style>
-    .centered-image {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 80%; /* Ajusta este valor para cambiar el tamaño de la imagen */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-# Usar st.image para cargar la imagen con la opción de usar el ancho de la columna
-st.image(image, caption='Arco de Ayacucho', use_column_width=False, width=200)
-
-# HTML para centrar la imagen
-st.markdown("""
-    <img src="{ruta_imagen_local}" class="centered-image">
-    """, unsafe_allow_html=True)
-
 ################# boton para seleccionar la VARIEDAD #################
 
 st.header('Seleccione la variedad del quechua', divider='rainbow')
