@@ -253,7 +253,7 @@ if 'variedad' not in st.session_state:
     st.session_state['variedad'] = None
 
 # Selección de la variedad del quechua
-st.header('Seleccione la variedad del quechua', divider='violet')
+st.header('Variedad del quechua', divider='violet')
 
 col1, col2, col3 = st.columns(3)
 with col1:
