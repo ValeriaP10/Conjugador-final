@@ -181,29 +181,6 @@ background-color: rgba(0, 0, 0, 0);
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
-################################################
-
-st.set_page_config(layout="wide")
-# Custom HTML/CSS for the banner
-custom_html = """
-<div class="banner">
-    <img src="https://www.freewebheaders.com/wp-content/gallery/machu-picchu/ancient-city-machu-picchu-of-peru-website-header.jpg" alt="Banner Image">
-</div>
-<style>
-    .banner {
-        width: 160%;
-        height: 200px;
-        overflow: hidden;
-    }
-    .banner img {
-        width: 100%;
-        object-fit: cover;
-    }
-</style>
-"""
-# Display the custom HTML
-st.components.v1.html(custom_html)
-
 ########### TÍTULO #############
 
 st.image('machu_picchu_header.jpg')
@@ -271,21 +248,28 @@ st.markdown(
 
 st.header('Seleccione la variedad del quechua', divider='violet')
 
+# Inicializar session_state
+if 'variedad' not in st.session_state:
+    st.session_state['variedad'] = None
+
+# Selección de la variedad del quechua
+st.header('Seleccione la variedad del quechua', divider='rainbow')
+
 col1, col2, col3 = st.columns(3)
-variedad = None
 with col1:
     if st.button("Ayacucho"):
-        variedad = "Ayacucho"
+        st.session_state['variedad'] = "Ayacucho"
 with col2:
     if st.button("Cuzco"):
-        variedad = "Cuzco"
+        st.session_state['variedad'] = "Cuzco"
 with col3:
     if st.button("Ancash"):
-        variedad = "Ancash"
+        st.session_state['variedad'] = "Ancash"
 
-if not variedad:
+if not st.session_state['variedad']:
     st.warning("Por favor, seleccione una variedad del quechua.")
 else:
+    
 ########### menú desplegable para seleccionar VERBOS #################
 
     st.header('Verbo', divider='rainbow')
@@ -387,11 +371,11 @@ else:
 # Conjugar y mostrar el resultado según la variedad seleccionada
 
     conjugacion = None
-    if variedad == "Ayacucho":
+    if st.session_state['variedad'] == "Ayacucho":
         conjugacion = conj_final(base, numero, persona, tiempo)
-    elif variedad == "Cuzco":
+    elif st.session_state['variedad'] == "Cuzco":
         conjugacion = conj_final_cuzco(base, numero, persona, tiempo)
-    elif variedad == "Ancash":
+    elif st.session_state['variedad'] == "Ancash":
         conjugacion = conj_final_ancash(base, numero, persona, tiempo)
 
     if conjugacion:
