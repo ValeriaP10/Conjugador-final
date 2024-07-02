@@ -156,20 +156,20 @@ def conj_final_ancash(base, numero, persona, tiempo):
     if isinstance(sufijo_tiempo, float) and np.isnan(sufijo_tiempo):
         sufijo_tiempo = ''
     else:
-        sufijo_tiempo = str(sufijo_tiempo)  # Convertir a string si no es NaN
+        sufijo_tiempo = str(sufijo_tiempo) if sufijo_tiempo != '' else ''
     
     pronombre = ap[numero][persona]
     if isinstance(pronombre, float) and np.isnan(pronombre):
         pronombre = ''
     else:
-        pronombre = str(pronombre)  # Convertir a string si no es NaN
+        pronombre = str(pronombre) if pronombre != '' else ''
     
     # Verificar si todos los valores son NaN en la hoja de tiempo y variedad seleccionada
-    if all(isinstance(val, float) and np.isnan(val) or val == '' for val in A[tiempo][numero].values()):
+    if all((isinstance(val, float) and np.isnan(val)) or val == '' for val in A[tiempo][numero].values()):
         st.warning(f"No existe conjugación para el tiempo '{tiempo}' en la variedad del quechua seleccionada.")
         return None
 
-    return pronombre + ' ' + base + (sufijo_tiempo if sufijo_tiempo else '')
+    return pronombre + ' ' + base + sufijo_tiempo
 
 ##########################################################################
 ##########################################################################
@@ -190,7 +190,7 @@ import streamlit as st
 page_bg_img = """
 <style>
 [data-testid="stAppViewContainer"] {
-background-color: #F9F3FF;
+background-color: #F7F7F7;
 }
 
 [data-testid="stHeader"] {
