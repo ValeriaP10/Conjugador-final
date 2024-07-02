@@ -183,7 +183,7 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 
 ########### TÍTULO #############
 
-#st.title(':violet[Conjugador de verbos en quechua]')
+st.image('machu_picchu_header.jpg')
 
 st.markdown(
     """
@@ -246,7 +246,7 @@ st.markdown(
 
 ################# boton para seleccionar la VARIEDAD #################
 
-st.header('Seleccione la variedad del quechua', divider='rainbow')
+st.header('Seleccione la variedad del quechua', divider='violet')
 
 col1, col2, col3 = st.columns(3)
 with col1:
@@ -362,15 +362,15 @@ else:
     
 # Conjugar y mostrar el resultado según la variedad seleccionada
 
-    if st.button("Conjugar"):
-        if variedad == "Ayacucho":
-            conjugacion = conj_final(base, numero, persona, tiempo)
-        elif variedad == "Cuzco":
-            conjugacion = conj_final_cuzco(base, numero, persona, tiempo)
-        elif variedad == "Ancash":
-            conjugacion = conj_final_ancash(base, numero, persona, tiempo)
+    conjugacion = None
+    if variedad == "Ayacucho":
+        conjugacion = conj_final(base, numero, persona, tiempo)
+    elif variedad == "Cuzco":
+        conjugacion = conj_final_cuzco(base, numero, persona, tiempo)
+    elif variedad == "Ancash":
+        conjugacion = conj_final_ancash(base, numero, persona, tiempo)
 
-        if conjugacion:
-            st.write(f"La conjugación es: {conjugacion}")
-        else:
-            st.error("Hubo un error en la conjugación. Por favor, revise los parámetros seleccionados.")
+    if conjugacion:
+        st.write(f"La conjugación es: {conjugacion}")
+    else:
+        st.error("Hubo un error en la conjugación. Por favor, revise los parámetros seleccionados.")
