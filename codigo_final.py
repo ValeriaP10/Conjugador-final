@@ -128,7 +128,7 @@ def conj_quechua_ancash(base, numero, persona, tiempo):
 quechua_cuzco_pronombres = pd.read_excel('pronombres_ancash.xlsx')
 quechua_cuzco_pronombres = pd.ExcelFile('pronombres_ancash.xlsx')
 AP = {}
-afp = pd.read_excel('pronombres_cuzco.xlsx')      
+afp = pd.read_excel('pronombres_ancash.xlsx')      
 c = afp.columns                             
 afp.set_index(c[0], inplace=True)           
 ap = afp.to_dict()
@@ -326,17 +326,6 @@ else:
 #################### menú desplegable para seleccionar TIEMPO ###################
 
     st.header('Tiempo', divider='violet')
-    
-    st.markdown(
-        """
-        <style>
-        .justified-text {
-            text-align: justify;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
     
     tiempo = st.selectbox("Seleccione un tiempo: ", list(explicaciones_tiempo.keys()), index=0)
     explicacion_tiempo_placeholder = st.empty()
