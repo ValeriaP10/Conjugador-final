@@ -155,10 +155,14 @@ def conj_final_ancash(base, numero, persona, tiempo):
     sufijo_tiempo = A[tiempo][numero].get(persona, '')
     if sufijo_tiempo is None or (isinstance(sufijo_tiempo, float) and np.isnan(sufijo_tiempo)):
         sufijo_tiempo = ''
+    else:
+        sufijo_tiempo = str(sufijo_tiempo)  # Convertir a string si no es NaN
     
     pronombre = ap[numero][persona]
     if pronombre is None or (isinstance(pronombre, float) and np.isnan(pronombre)):
         pronombre = ''
+    else:
+        pronombre = str(pronombre)  # Convertir a string si no es NaN
     
     # Verificar si todos los valores son NaN en la hoja de tiempo y variedad seleccionada
     if all(np.isnan(val) or val == '' for val in A[tiempo][numero].values()):
