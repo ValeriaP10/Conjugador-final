@@ -8,6 +8,7 @@ Created on Tue Jul  2 12:27:10 2024
 ## leemos el excel
 
 import pandas as pd
+import numpy as np
 
 verbos = pd.read_excel('verbos.xlsx')
 
@@ -134,6 +135,8 @@ afp.set_index(c[0], inplace=True)
 ap = afp.to_dict()
 
 def conj_final_ancash(base, numero, persona, tiempo):
+    
+    # Validar claves y manejar valores 'nan'
     if numero not in ap:
         st.error(f"Clave '{numero}' no encontrada en el diccionario 'ap'.")
         return
@@ -151,11 +154,11 @@ def conj_final_ancash(base, numero, persona, tiempo):
         return
     
     sufijo_tiempo = A[tiempo][numero].get(persona, '')
-    if sufijo_tiempo is None:
+    if sufijo_tiempo is None or (isinstance(sufijo_tiempo, float) and np.isnan(sufijo_tiempo)):
         sufijo_tiempo = ''
     
     pronombre = ap[numero][persona]
-    if pronombre is None:
+    if pronombre is None or (isinstance(pronombre, float) and np.isnan(pronombre)):
         pronombre = ''
 
     return pronombre + ' ' + base + (sufijo_tiempo if sufijo_tiempo else '')
