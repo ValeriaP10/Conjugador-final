@@ -270,7 +270,7 @@ else:
     
 ########### menú desplegable para seleccionar VERBOS #################
 
-    st.header('Verbo', divider='rainbow')
+    st.header('Verbo', divider='violet')
     
     base = st.selectbox(
         "Seleccione un verbo en quechua: ",
@@ -283,7 +283,7 @@ else:
 
 ############## menú desplegable para seleccionar NUMERO ##############
 
-    st.header('Número', divider='rainbow')
+    st.header('Número', divider='violet')
     
     numero = st.radio(
         "Seleccione un número: ",
@@ -315,7 +315,7 @@ else:
 
 ###### menú desplegable para seleccionar PERSONA ######
 
-    st.header('Persona', divider='rainbow')
+    st.header('Persona', divider='violet')
     
     persona = st.selectbox("Seleccione una persona: ", list(explicaciones_persona.keys()), index=0)
     explicacion_persona_placeholder = st.empty()
@@ -327,7 +327,7 @@ else:
 
 #################### menú desplegable para seleccionar TIEMPO ###################
 
-    st.header('Tiempo', divider='rainbow')
+    st.header('Tiempo', divider='violet')
     
     st.markdown(
         """
@@ -356,7 +356,7 @@ else:
         
 ############################# RESULTADO #######################################
 
-    st.header('Resultado', divider='rainbow')
+    st.header('Resultado', divider='violet')
 
 #if base and numero and persona and tiempo:
 #    resultado = conj_final(base, numero, persona, tiempo)
@@ -377,6 +377,7 @@ else:
         conjugacion = conj_final_ancash(base, numero, persona, tiempo)
 
     if conjugacion:
-        st.write(f"La conjugación es: {conjugacion}")
+        st.write("El verbo conjugado es: ")
+        st.markdown(f'<p style="font-size:24px; text-align:center;">{conjugacion}</p>', unsafe_allow_html=True)
     else:
         st.error("Hubo un error en la conjugación. Por favor, revise los parámetros seleccionados.")
