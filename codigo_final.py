@@ -21,13 +21,13 @@ import pandas as pd
 ############################# AYACUCHO #################################
 ########################################################################
 
-quechua_suf = pd.read_excel('quechua.xlsx')
-quechua_suf = pd.ExcelFile('quechua.xlsx')
+quechua_suf = pd.read_excel('quechua_ayacucho.xlsx')
+quechua_suf = pd.ExcelFile('quechua_ayacucho.xlsx')
 D = {}
 
 
 for hoja in quechua_suf.sheet_names: 
-    df = pd.read_excel('quechua.xlsx', sheet_name=hoja)     
+    df = pd.read_excel('quechua_ayacucho.xlsx', sheet_name=hoja)     
     c = df.columns                                          
     df.set_index(c[0], inplace=True)                        
     d = df.to_dict()                                        
@@ -36,10 +36,10 @@ for hoja in quechua_suf.sheet_names:
 def conj_quechua(base, numero, persona, tiempo):
     return base + D[tiempo][numero][persona]
 
-quechua_pronombres = pd.read_excel('pronombres.xlsx')
-quechua_pronombres = pd.ExcelFile('pronombres.xlsx')
+quechua_pronombres = pd.read_excel('pronombres_ayacucho.xlsx')
+quechua_pronombres = pd.ExcelFile('pronombres_ayacucho.xlsx')
 DP = {}
-dfp = pd.read_excel('pronombres.xlsx')      
+dfp = pd.read_excel('pronombres_ayacucho.xlsx')      
 c = dfp.columns                             
 dfp.set_index(c[0], inplace=True)           
 dp = dfp.to_dict()
