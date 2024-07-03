@@ -126,8 +126,8 @@ for hoja in quechua_suf_ancash.sheet_names:
 def conj_quechua_ancash(base, numero, persona, tiempo):
     return base + A[tiempo][numero][persona]
 
-quechua_cuzco_pronombres = pd.read_excel('pronombres_ancash.xlsx')
-quechua_cuzco_pronombres = pd.ExcelFile('pronombres_ancash.xlsx')
+quechua_ancash_pronombres = pd.read_excel('pronombres_ancash.xlsx')
+quechua_ancash_pronombres = pd.ExcelFile('pronombres_ancash.xlsx')
 AP = {}
 afp = pd.read_excel('pronombres_ancash.xlsx')      
 c = afp.columns                             
@@ -150,7 +150,7 @@ def conj_final_ancash(base, numero, persona, tiempo):
     if persona not in A[tiempo][numero]:
         st.error(f"Clave '{persona}' no encontrada en el diccionario anidado dentro de 'A[{tiempo}][{numero}]'.")
         return
-    return zp[numero][persona] + ' ' + base + Z[tiempo][numero][persona]
+    return ap[numero][persona] + ' ' + base + A[tiempo][numero][persona]
 
 ##########################################################################
 ##########################################################################
@@ -320,6 +320,8 @@ else:
     st.header('Tiempo', divider='violet')
     
     tiempo = st.selectbox("Seleccione un tiempo: ", list(explicaciones_tiempo.keys()), index=0)
+    
+    
     explicacion_tiempo_placeholder = st.empty()
     explicaciones_tiempo["presente 1"] += "<br><br>Ejemplo: 'Yo veo televisión.'"
     explicaciones_tiempo["presente 2"] += "<br><br>Ejemplo: 'Yo estoy viendo televisión.'"
