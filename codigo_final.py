@@ -344,16 +344,22 @@ else:
     st.header('Resultado', divider='violet')
 
     conjugacion = None
+    error_en_conjugacion = False
+    
     if st.session_state['variedad'] == "Ayacucho":
         conjugacion = conj_final(base, numero, persona, tiempo)
     elif st.session_state['variedad'] == "Cuzco":
         conjugacion = conj_final_cuzco(base, numero, persona, tiempo)
     elif st.session_state['variedad'] == "Ancash":
         conjugacion = conj_final_ancash(base, numero, persona, tiempo)
-
-    if conjugacion:
+        if conjugacion is None:
+            error_en_conjugacion = True
+    
+    if conjugacion is not None:
         st.write("La conjugación es: ")
         st.markdown(f'<p style="font-size:24px; text-align:center;">{conjugacion}</p>', unsafe_allow_html=True)
-        
+    elif error_en_conjugacion:
+        # No se muestra ningún mensaje de error específico aquí porque ya se maneja en conj_final_ancash
+        pass
     else:
         st.error("Hubo un error en la conjugación. Por favor, revise los parámetros seleccionados.")
