@@ -150,31 +150,7 @@ def conj_final_ancash(base, numero, persona, tiempo):
     if persona not in A[tiempo][numero]:
         st.error(f"Clave '{persona}' no encontrada en el diccionario anidado dentro de 'A[{tiempo}][{numero}]'.")
         return
-    # Obtener el sufijo de tiempo
-    sufijo_tiempo = A.get(tiempo, {}).get(numero, {}).get(persona)
-    
-    # Verificar si el tiempo existe y no es 'x'
-    if sufijo_tiempo == 'x':
-        st.warning(f"No existe conjugación para el tiempo '{tiempo}' en la variedad del quechua seleccionada.")
-        return None
-     
-    # Manejo de NaN y conversión a string
-    if isinstance(sufijo_tiempo, (float, np.floating)):
-        if np.isnan(sufijo_tiempo):
-            sufijo_tiempo = ''
-    else:
-        sufijo_tiempo = str(sufijo_tiempo) if sufijo_tiempo is not None else ''
-    
-    pronombre = ap[numero][persona]
-    
-    # Manejo de NaN y conversión a string
-    if isinstance(pronombre, (float, np.floating)):
-        if np.isnan(pronombre):
-            pronombre = ''
-    else:
-        pronombre = str(pronombre) if pronombre is not None else ''
-    
-    return pronombre + ' ' + base + sufijo_tiempo
+    return zp[numero][persona] + ' ' + base + Z[tiempo][numero][persona]
 
 ##########################################################################
 ##########################################################################
@@ -333,7 +309,7 @@ else:
     
     persona = st.selectbox("Seleccione una persona: ", list(explicaciones_persona.keys()), index=0)
     explicacion_persona_placeholder = st.empty()
-    explicaciones_persona["primera inclusiva"] += "<br><br>Ejemplo: '(Todos) Nosotros vamos al mercado.'"
+    explicaciones_persona["primera inclusiva"] += "<br><br>Ejemplo: '(Todos) nosotros vamos al mercado.'"
     explicaciones_persona["primera exclusiva"] += "<br><br>Ejemplo: 'Nosotros (pero no tú) vamos al mercado.'"
     
     explicacion_persona_placeholder.markdown("**Explicación de persona seleccionada:** " + explicaciones_persona[persona], unsafe_allow_html=True)
@@ -351,9 +327,9 @@ else:
     explicaciones_tiempo["pasado experimentado 1"] += "<br><br>Ejemplo: 'Yo veía televisión.'"
     explicaciones_tiempo["pasado experimentado 2"] += "<br><br>Ejemplo: 'Yo estaba viendo televisión.'"
     explicaciones_tiempo["pasado experimentado 3"] += "<br><br>Ejemplo: 'Yo solía ver televisión.'"
-    explicaciones_tiempo["pasado no experimentado 1"] += "<br><br>Ejemplo: '(Dicen que) Yo veía televisión.'"
-    explicaciones_tiempo["pasado no experimentado 2"] += "<br><br>Ejemplo: '(Dicen que) Yo estaba viendo televisión.'"
-    explicaciones_tiempo["pasado no experimentado 3"] += "<br><br>Ejemplo: '(Dicen que) Yo solía ver televisión.'"
+    explicaciones_tiempo["pasado no experimentado 1"] += "<br><br>Ejemplo: '(Dicen que) yo veía televisión.'"
+    explicaciones_tiempo["pasado no experimentado 2"] += "<br><br>Ejemplo: '(Dicen que) yo estaba viendo televisión.'"
+    explicaciones_tiempo["pasado no experimentado 3"] += "<br><br>Ejemplo: '(Dicen que) yo solía ver televisión.'"
     
     explicacion_tiempo_placeholder.markdown("**Explicación de tiempo seleccionado:** " + explicaciones_tiempo[tiempo], unsafe_allow_html=True)
         
