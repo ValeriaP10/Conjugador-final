@@ -339,7 +339,7 @@ else:
     elif error_en_conjugacion:
         with st.popover("Más información"):
             st.write("""
-            Aquí puedes agregar más información sobre por qué no existe conjugación para este tiempo en la variedad del quechua de Ancash.
+            La variedad del quechua de Áncash es distinta a la variedad ayacuchana o cuzqueña, pues los hablantes no utilizan este tiempo en su habla. Pueden usar otras estrategias para transmitir el mismo mensaje, pero, por el momento, no se cuenta con información académica acerca de los sufijos usados para conjugar verbos en este tiempo.
             """)
     else:
         st.error("Hubo un error en la conjugación. Por favor, revise los parámetros seleccionados.")
