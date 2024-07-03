@@ -153,11 +153,14 @@ def conj_final_ancash(base, numero, persona, tiempo):
     
     conjugacion = ap[numero][persona] + ' ' + base + A[tiempo][numero][persona]
    
+    # Ejemplo de asignación de archivo de audio según la conjugación
+    audio_file = f"audio/{base}_{numero}_{persona}_{tiempo}.m4a"
+    
     if A[tiempo][numero][persona].endswith('x'):
         st.warning(f"No existe conjugación para el tiempo '{tiempo}' en la variedad del quechua de Ancash.")
-        return None
-   
-    return conjugacion
+        return None, None
+    
+    return conjugacion, audio_file
 
 ##########################################################################
 ##########################################################################
@@ -335,20 +338,23 @@ else:
     st.header('Resultado', divider='violet')
 
     conjugacion = None
+    audio_file = None
     error_en_conjugacion = False
     
     if st.session_state['variedad'] == "Ayacucho":
-        conjugacion = conj_final(base, numero, persona, tiempo)
+        conjugacion, audio_file = conj_final(base, numero, persona, tiempo)
     elif st.session_state['variedad'] == "Cuzco":
-        conjugacion = conj_final_cuzco(base, numero, persona, tiempo)
+        conjugacion, audio_file = conj_final_cuzco(base, numero, persona, tiempo)
     elif st.session_state['variedad'] == "Ancash":
-        conjugacion = conj_final_ancash(base, numero, persona, tiempo)
+        conjugacion, audio_file = conj_final_ancash(base, numero, persona, tiempo)
         if conjugacion is None:
             error_en_conjugacion = True
     
     if conjugacion is not None:
         st.write("La conjugación es: ")
         st.markdown(f'<p style="font-size:24px; text-align:center;">{conjugacion}</p>', unsafe_allow_html=True)
+        if audio_file:
+            st.audio(audio_file)
     elif error_en_conjugacion:
         with st.popover("Más información"):
             st.write("""
@@ -356,3 +362,5 @@ else:
             """)
     else:
         st.error("Hubo un error en la conjugación. Por favor, revise los parámetros seleccionados.")
+        
+        conjugacion = None
