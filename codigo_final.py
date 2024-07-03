@@ -60,7 +60,8 @@ def conj_final(base,numero,persona,tiempo):
     if persona not in D[tiempo][numero]:
         st.error(f"Clave '{persona}' no encontrada en el diccionario anidado dentro de 'D[{tiempo}][{numero}]'.")
         return
-    return dp[numero][persona] + ' ' + base + D[tiempo][numero][persona]
+    audio_file = f"ayacucho/{base}_{numero}_{persona}_{tiempo}.m4a"
+    return dp[numero][persona] + ' ' + base + D[tiempo][numero][persona], audio_file
 
 ########################################################################
 ############################### CUZCO ##################################
@@ -105,7 +106,8 @@ def conj_final_cuzco(base,numero,persona,tiempo):
     if persona not in Z[tiempo][numero]:
         st.error(f"Clave '{persona}' no encontrada en el diccionario anidado dentro de 'Z[{tiempo}][{numero}]'.")
         return
-    return zp[numero][persona] + ' ' + base + Z[tiempo][numero][persona]
+    audio_file = f"cuzco/{base}_{numero}_{persona}_{tiempo}.m4a"
+    return zp[numero][persona] + ' ' + base + Z[tiempo][numero][persona], audio_file
 
 ########################################################################
 ############################## ANCASH ##################################
