@@ -211,7 +211,7 @@ st.markdown(
 ########### INTRODUCCIÓN #############
 
 st.write("""
-<br><br>
+<br>
 <div style="text-align: justify">
 Esta página web tiene el objetivo de crear conjugaciones de los verbos quechuas más comunes. Al seleccionar un verbo, un número, una persona y un tiempo, se podrá obtener la forma conjugada de dicho verbo con los sufijos correspondientes. Se ofrecen también explicaciones para algunos conceptos de persona y tiempo verbal que pueden resultar confusos. ¡Anímate a conocer más sobre el quechua! 😄
 </div>
