@@ -321,6 +321,9 @@ else:
     
     tiempo = st.selectbox("Seleccione un tiempo: ", list(explicaciones_tiempo.keys()), index=0)
     
+    if tiempo.endswith('x'):
+        st.warning(f"No existe conjugación para el tiempo '{tiempo}' en la variedad del quechua seleccionada.")
+        
     
     explicacion_tiempo_placeholder = st.empty()
     explicaciones_tiempo["presente 1"] += "<br><br>Ejemplo: 'Yo veo televisión.'"
