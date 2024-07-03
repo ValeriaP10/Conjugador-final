@@ -247,11 +247,12 @@ with col3:
 if not st.session_state['variedad']:
     st.warning("Por favor, seleccione una variedad del quechua.")
 else:
+    st.write(f"Variedad seleccionada: {st.session_state['variedad']}")
     
 ########### menú desplegable para seleccionar VERBOS #################
 
     # Ruta donde se encuentran los archivos de audio
-    ruta_audio = "audio/"
+    ruta_audio = "verbos/"
 
     st.header('Verbo', divider='violet')
     
