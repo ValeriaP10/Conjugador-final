@@ -337,7 +337,8 @@ else:
         st.write("La conjugación es: ")
         st.markdown(f'<p style="font-size:24px; text-align:center;">{conjugacion}</p>', unsafe_allow_html=True)
     elif error_en_conjugacion:
-        # No se muestra ningún mensaje de error específico aquí porque ya se maneja en conj_final_ancash
+        st.warning(f"No existe conjugación para el tiempo '{tiempo}' en la variedad del quechua de Ancash.")
+    
         with st.beta_expander("Más información"):
             st.write("""
             Aquí puedes agregar más información sobre por qué no existe conjugación para este tiempo en la variedad del quechua de Ancash.
