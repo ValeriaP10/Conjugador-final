@@ -233,16 +233,45 @@ if 'variedad' not in st.session_state:
 # Selección de la variedad del quechua
 st.header('Variedad del quechua', divider='violet')
 
+# Define colores para los botones seleccionados
+selected_color = "background-color: #4CAF50; color: white;"
+default_color = "background-color: #f0f0f5;"
+
+# Crear una función para estilizar botones
+def style_button(variedad, current_variedad):
+    if variedad == current_variedad:
+        return selected_color
+    else:
+        return default_color
+
 col1, col2, col3 = st.columns(3)
 with col1:
-    if st.button("Ayacucho"):
+    if st.button("Ayacucho", key="ayacucho_btn", help="Selecciona la variedad Ayacucho", 
+                 on_click=lambda: st.session_state.update({'variedad': "Ayacucho"})):
         st.session_state['variedad'] = "Ayacucho"
 with col2:
-    if st.button("Cuzco"):
+    if st.button("Cuzco", key="cuzco_btn", help="Selecciona la variedad Cuzco", 
+                 on_click=lambda: st.session_state.update({'variedad': "Cuzco"})):
         st.session_state['variedad'] = "Cuzco"
 with col3:
-    if st.button("Ancash"):
+    if st.button("Ancash", key="ancash_btn", help="Selecciona la variedad Ancash", 
+                 on_click=lambda: st.session_state.update({'variedad': "Ancash"})):
         st.session_state['variedad'] = "Ancash"
+
+# Agregar estilo a los botones seleccionados
+st.markdown(f"""
+    <style>
+    .stButton > button:nth-child(1)[key="ayacucho_btn"] {{
+        {style_button('Ayacucho', st.session_state['variedad'])}
+    }}
+    .stButton > button:nth-child(1)[key="cuzco_btn"] {{
+        {style_button('Cuzco', st.session_state['variedad'])}
+    }}
+    .stButton > button:nth-child(1)[key="ancash_btn"] {{
+        {style_button('Ancash', st.session_state['variedad'])}
+    }}
+    </style>
+    """, unsafe_allow_html=True)
 
 if not st.session_state['variedad']:
     st.warning("Por favor, seleccione una variedad del quechua.")
