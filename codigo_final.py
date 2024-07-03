@@ -156,7 +156,7 @@ def conj_final_ancash(base, numero, persona, tiempo):
     conjugacion = ap[numero][persona] + ' ' + base + A[tiempo][numero][persona]
    
     # Ejemplo de asignación de archivo de audio según la conjugación
-    audio_file = f"audio/{base}_{numero}_{persona}_{tiempo}.m4a"
+    audio_file = f"ancash/{base}_{numero}_{persona}_{tiempo}.m4a"
     
     if A[tiempo][numero][persona].endswith('x'):
         st.warning(f"No existe conjugación para el tiempo '{tiempo}' en la variedad del quechua de Ancash.")
