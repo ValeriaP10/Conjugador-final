@@ -8,7 +8,6 @@ Created on Tue Jul  2 12:27:10 2024
 ## leemos el excel
 
 import pandas as pd
-import numpy as np
 
 verbos = pd.read_excel('verbos.xlsx')
 
@@ -150,7 +149,14 @@ def conj_final_ancash(base, numero, persona, tiempo):
     if persona not in A[tiempo][numero]:
         st.error(f"Clave '{persona}' no encontrada en el diccionario anidado dentro de 'A[{tiempo}][{numero}]'.")
         return
-    return ap[numero][persona] + ' ' + base + A[tiempo][numero][persona]
+    
+    conjugacion = ap[numero][persona] + ' ' + base + A[tiempo][numero][persona]
+   
+    if A[tiempo][numero][persona].endswith('x'):
+        st.warning(f"No existe conjugación para el tiempo '{tiempo}' en la variedad del quechua de Ancash.")
+        return None
+   
+    return conjugacion
 
 ##########################################################################
 ##########################################################################
@@ -320,7 +326,6 @@ else:
     st.header('Tiempo', divider='violet')
     
     tiempo = st.selectbox("Seleccione un tiempo: ", list(explicaciones_tiempo.keys()), index=0)
-
     explicacion_tiempo_placeholder = st.empty()
     explicaciones_tiempo["presente 1"] += "<br><br>Ejemplo: 'Yo veo televisión.'"
     explicaciones_tiempo["presente 2"] += "<br><br>Ejemplo: 'Yo estoy viendo televisión.'"
@@ -338,16 +343,6 @@ else:
 
     st.header('Resultado', divider='violet')
 
-#if base and numero and persona and tiempo:
-#    resultado = conj_final(base, numero, persona, tiempo)
-#    if resultado:
-#        st.write("El verbo conjugado es: ")
-#        st.markdown(f'<p style="font-size:24px; text-align:center;">{resultado}</p>', unsafe_allow_html=True)
-#else:
-#    st.error("Por favor, asegúrese de que todas las opciones estén seleccionadas.")
-    
-# Conjugar y mostrar el resultado según la variedad seleccionada
-
     conjugacion = None
     if st.session_state['variedad'] == "Ayacucho":
         conjugacion = conj_final(base, numero, persona, tiempo)
@@ -359,8 +354,6 @@ else:
     if conjugacion:
         st.write("La conjugación es: ")
         st.markdown(f'<p style="font-size:24px; text-align:center;">{conjugacion}</p>', unsafe_allow_html=True)
-        if conjugacion.endswith('x'):
-            st.warning(f"No existe conjugación para el tiempo '{tiempo}' en la variedad del quechua seleccionada.")
-            
+        
     else:
         st.error("Hubo un error en la conjugación. Por favor, revise los parámetros seleccionados.")
