@@ -234,7 +234,7 @@ if 'variedad' not in st.session_state:
 st.header('Variedad del quechua', divider='violet')
 
 # Define colores para los botones seleccionados
-selected_color = "background-color: #4CAF50; color: white;"
+selected_color = "background-color: #4CAF50; color: violet;"
 default_color = "background-color: #f0f0f5;"
 
 # Crear una función para estilizar botones
