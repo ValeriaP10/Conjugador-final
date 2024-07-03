@@ -355,8 +355,10 @@ else:
     if conjugacion is not None:
         st.write("La conjugación es: ")
         st.markdown(f'<p style="font-size:24px; text-align:center;">{conjugacion}</p>', unsafe_allow_html=True)
-        if audio_file:
+        
+        if audio_file and os.path.exists(audio_file):
             st.audio(audio_file)
+            
     elif error_en_conjugacion:
         with st.popover("Más información"):
             st.write("""
