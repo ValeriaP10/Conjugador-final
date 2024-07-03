@@ -320,11 +320,7 @@ else:
     st.header('Tiempo', divider='violet')
     
     tiempo = st.selectbox("Seleccione un tiempo: ", list(explicaciones_tiempo.keys()), index=0)
-    
-    if tiempo.endswith('x'):
-        st.warning(f"No existe conjugación para el tiempo '{tiempo}' en la variedad del quechua seleccionada.")
-        
-    
+
     explicacion_tiempo_placeholder = st.empty()
     explicaciones_tiempo["presente 1"] += "<br><br>Ejemplo: 'Yo veo televisión.'"
     explicaciones_tiempo["presente 2"] += "<br><br>Ejemplo: 'Yo estoy viendo televisión.'"
@@ -363,5 +359,8 @@ else:
     if conjugacion:
         st.write("La conjugación es: ")
         st.markdown(f'<p style="font-size:24px; text-align:center;">{conjugacion}</p>', unsafe_allow_html=True)
+        if conjugacion.endswith('x'):
+            st.warning(f"No existe conjugación para el tiempo '{tiempo}' en la variedad del quechua seleccionada.")
+            
     else:
         st.error("Hubo un error en la conjugación. Por favor, revise los parámetros seleccionados.")
