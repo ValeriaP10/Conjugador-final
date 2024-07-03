@@ -257,7 +257,7 @@ else:
     st.write("Seleccionaste: ", dict_que_esp[base])
     
     # Nombre del archivo de audio
-    nombre_audio = base + ".mp3"
+    nombre_audio = base + ".m4a"
     ruta_completa_audio = os.path.join(ruta_audio, nombre_audio)
     
     if os.path.exists(ruta_completa_audio):
