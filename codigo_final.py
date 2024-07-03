@@ -213,7 +213,7 @@ st.markdown(
 st.write("""
 <br>
 <div style="text-align: justify">
-Esta página web tiene el objetivo de crear conjugaciones de los verbos quechuas más comunes. Al seleccionar un verbo, un número, una persona y un tiempo, se podrá obtener la forma conjugada de dicho verbo con los sufijos correspondientes. Se ofrecen también explicaciones para algunos conceptos de persona y tiempo verbal que pueden resultar confusos. ¡Anímate a conocer más sobre el quechua! 😄
+Esta página web tiene el objetivo de crear conjugaciones de los verbos quechuas más comunes. Al seleccionar una variedad de la lengua, un verbo, un número, una persona y un tiempo, se podrá obtener la forma conjugada de dicho verbo con los sufijos correspondientes. Se ofrecen también explicaciones para algunos conceptos de persona y tiempo verbal que pueden resultar confusos. ¡Anímate a conocer más sobre el quechua! 😄
 </div>
 <br><br>
 """, unsafe_allow_html=True)
@@ -338,6 +338,9 @@ else:
         st.markdown(f'<p style="font-size:24px; text-align:center;">{conjugacion}</p>', unsafe_allow_html=True)
     elif error_en_conjugacion:
         # No se muestra ningún mensaje de error específico aquí porque ya se maneja en conj_final_ancash
-        pass
+        with st.beta_expander("Más información"):
+            st.write("""
+            Aquí puedes agregar más información sobre por qué no existe conjugación para este tiempo en la variedad del quechua de Ancash.
+            """)
     else:
         st.error("Hubo un error en la conjugación. Por favor, revise los parámetros seleccionados.")
