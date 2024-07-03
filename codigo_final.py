@@ -233,45 +233,16 @@ if 'variedad' not in st.session_state:
 # Selección de la variedad del quechua
 st.header('Variedad del quechua', divider='violet')
 
-# Función para manejar el cambio de variedad
-def seleccionar_variedad(variedad):
-    st.session_state['variedad'] = variedad
-
-# HTML y JavaScript para manejar el cambio de color de los botones
-st.markdown("""
-    <style>
-    .selected {
-        background-color: #4CAF50 !important;
-        color: white !important;
-    }
-    .default {
-        background-color: #f0f0f5 !important;
-    }
-    </style>
-    <script>
-    function changeColor(buttonId) {
-        document.getElementById('ayacucho_btn').classList.remove('selected');
-        document.getElementById('cuzco_btn').classList.remove('selected');
-        document.getElementById('ancash_btn').classList.remove('selected');
-        document.getElementById(buttonId).classList.add('selected');
-    }
-    </script>
-    """, unsafe_allow_html=True)
-
-# Botones de selección de variedad
 col1, col2, col3 = st.columns(3)
 with col1:
-    if st.button("Ayacucho", key="ayacucho_btn", on_click=lambda: seleccionar_variedad("Ayacucho")):
+    if st.button("Ayacucho"):
         st.session_state['variedad'] = "Ayacucho"
-        st.markdown("<script>changeColor('ayacucho_btn');</script>", unsafe_allow_html=True)
 with col2:
-    if st.button("Cuzco", key="cuzco_btn", on_click=lambda: seleccionar_variedad("Cuzco")):
+    if st.button("Cuzco"):
         st.session_state['variedad'] = "Cuzco"
-        st.markdown("<script>changeColor('cuzco_btn');</script>", unsafe_allow_html=True)
 with col3:
-    if st.button("Ancash", key="ancash_btn", on_click=lambda: seleccionar_variedad("Ancash")):
+    if st.button("Ancash"):
         st.session_state['variedad'] = "Ancash"
-        st.markdown("<script>changeColor('ancash_btn');</script>", unsafe_allow_html=True)
 
 if not st.session_state['variedad']:
     st.warning("Por favor, seleccione una variedad del quechua.")
