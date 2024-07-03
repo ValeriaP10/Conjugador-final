@@ -233,45 +233,45 @@ if 'variedad' not in st.session_state:
 # Selección de la variedad del quechua
 st.header('Variedad del quechua', divider='violet')
 
-# Define colores para los botones seleccionados
-selected_color = "background-color: #4CAF50; color: violet;"
-default_color = "background-color: #f0f0f5;"
+# Función para manejar el cambio de variedad
+def seleccionar_variedad(variedad):
+    st.session_state['variedad'] = variedad
 
-# Crear una función para estilizar botones
-def style_button(variedad, current_variedad):
-    if variedad == current_variedad:
-        return selected_color
-    else:
-        return default_color
+# HTML y JavaScript para manejar el cambio de color de los botones
+st.markdown("""
+    <style>
+    .selected {
+        background-color: #4CAF50 !important;
+        color: white !important;
+    }
+    .default {
+        background-color: #f0f0f5 !important;
+    }
+    </style>
+    <script>
+    function changeColor(buttonId) {
+        document.getElementById('ayacucho_btn').classList.remove('selected');
+        document.getElementById('cuzco_btn').classList.remove('selected');
+        document.getElementById('ancash_btn').classList.remove('selected');
+        document.getElementById(buttonId).classList.add('selected');
+    }
+    </script>
+    """, unsafe_allow_html=True)
 
+# Botones de selección de variedad
 col1, col2, col3 = st.columns(3)
 with col1:
-    if st.button("Ayacucho", key="ayacucho_btn", 
-                 on_click=lambda: st.session_state.update({'variedad': "Ayacucho"})):
+    if st.button("Ayacucho", key="ayacucho_btn", on_click=lambda: seleccionar_variedad("Ayacucho")):
         st.session_state['variedad'] = "Ayacucho"
+        st.markdown("<script>changeColor('ayacucho_btn');</script>", unsafe_allow_html=True)
 with col2:
-    if st.button("Cuzco", key="cuzco_btn",  
-                 on_click=lambda: st.session_state.update({'variedad': "Cuzco"})):
+    if st.button("Cuzco", key="cuzco_btn", on_click=lambda: seleccionar_variedad("Cuzco")):
         st.session_state['variedad'] = "Cuzco"
+        st.markdown("<script>changeColor('cuzco_btn');</script>", unsafe_allow_html=True)
 with col3:
-    if st.button("Ancash", key="ancash_btn",  
-                 on_click=lambda: st.session_state.update({'variedad': "Ancash"})):
+    if st.button("Ancash", key="ancash_btn", on_click=lambda: seleccionar_variedad("Ancash")):
         st.session_state['variedad'] = "Ancash"
-
-# Agregar estilo a los botones seleccionados
-st.markdown(f"""
-    <style>
-    .stButton > button:nth-child(1)[key="ayacucho_btn"] {{
-        {style_button('Ayacucho', st.session_state['variedad'])}
-    }}
-    .stButton > button:nth-child(1)[key="cuzco_btn"] {{
-        {style_button('Cuzco', st.session_state['variedad'])}
-    }}
-    .stButton > button:nth-child(1)[key="ancash_btn"] {{
-        {style_button('Ancash', st.session_state['variedad'])}
-    }}
-    </style>
-    """, unsafe_allow_html=True)
+        st.markdown("<script>changeColor('ancash_btn');</script>", unsafe_allow_html=True)
 
 if not st.session_state['variedad']:
     st.warning("Por favor, seleccione una variedad del quechua.")
