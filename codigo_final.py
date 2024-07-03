@@ -256,9 +256,6 @@ else:
     
     st.write("Seleccionaste: ", dict_que_esp[base])
     
-    if base.endswith('y'):
-        base = base[:-1]
-        
     # Nombre del archivo de audio
     nombre_audio = base + ".mp3"
     ruta_completa_audio = os.path.join(ruta_audio, nombre_audio)
@@ -267,7 +264,10 @@ else:
         st.audio(ruta_completa_audio)
     else:
         st.warning(f"No se encontró archivo de audio para el verbo '{base}'.")
-
+    
+    if base.endswith('y'):
+        base = base[:-1]
+        
 ############## menú desplegable para seleccionar NUMERO ##############
 
     st.header('Número', divider='violet')
