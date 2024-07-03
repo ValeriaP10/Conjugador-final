@@ -294,15 +294,15 @@ else:
     }
     
     explicaciones_tiempo = {
-        "presente 1": "El presente 1 es el presente simple. Este se usa para describir acciones que ocurren regularmente a lo largo del tiempo.",
-        "presente 2": "El presente 2 es el presente progresivo. Este se usa para describir acciones que están ocurriendo en este momento.",
-        "presente 3": "El presente 3 es el presente habitual. Este se usa para describir acciones que se repiten en el tiempo de manera finita, como hábitos o rutinas.",
-        "pasado experimentado 1": "El pasado experimentado 1 es el pasado experimentado simple. Este se usa para describir acciones que ocurrieron en el pasado y que le constan al sujeto por ser testigo directo de la acción.",
-        "pasado experimentado 2": "El pasado experimentado 2 es el pasado experimentado progresivo. Este se usa para describir acciones que estuvieron ocurriendo en el pasado y que le constan al sujeto por ser testigo directo de la acción.",
-        "pasado experimentado 3": "El pasado experimentado 3 es el pasado experimentado habitual. Este se usa para describir acciones que ocurrían regularmente en el pasado y que le constan al sujeto por ser testigo directo de la acción.",
-        "pasado no experimentado 1": "El pasado no experimentado 1 es el pasado no experimentado simple. Este se usa para describir acciones que ocurrieron en el pasado sin la participación o el conocimiento directo del sujeto.",
-        "pasado no experimentado 2": "El pasado no experimentado 2 es el pasado no experimentado progresivo. Este se usa para describir acciones que estuvieron ocurriendo en el pasado sin la participación o el conocimiento directo del sujeto.",
-        "pasado no experimentado 3": "El pasado no experimentado 3 es el pasado no experimentado habitual. Este se usa para describir acciones que ocurrían regularmente en el pasado sin la participación o el conocimiento directo del sujeto."
+        "presente simple": "Este tiempo se usa para describir acciones que ocurren regularmente a lo largo del tiempo.",
+        "presente progresivo": "Este tiempo se usa para describir acciones que están ocurriendo en este momento.",
+        "presente habitual": "Este tiempo se usa para describir acciones que se repiten en el tiempo de manera finita, como hábitos o rutinas.",
+        "pasado 1 simple": "Este tiempo se usa para describir acciones que ocurrieron en el pasado y que fueron vistas u oídas por el hablante.",
+        "pasado 1 progresivo": "Este tiempo se usa para describir acciones que estuvieron ocurriendo en el pasado y que fueron vistas u oídas por el hablante.",
+        "pasado 1 habitual": "Este tiempo se usa para describir acciones que ocurrían regularmente en el pasado y que fueron vistas u oídas por el hablante.",
+        "pasado 2 simple": "Este tiempose usa para describir acciones que ocurrieron en el pasado sin la participación o el conocimiento directo del hablante.",
+        "pasado 2 progresivo": "Este tiempo se usa para describir acciones que estuvieron ocurriendo en el pasado sin la participación o el conocimiento directo del hablante.",
+        "pasado 2 habitual": "Este tiempo se usa para describir acciones que ocurrían regularmente en el pasado sin la participación o el conocimiento directo del hablante."
     }
 
 ###### menú desplegable para seleccionar PERSONA ######
@@ -323,15 +323,15 @@ else:
     
     tiempo = st.selectbox("Seleccione un tiempo: ", list(explicaciones_tiempo.keys()), index=0)
     explicacion_tiempo_placeholder = st.empty()
-    explicaciones_tiempo["presente 1"] += "<br><br>Ejemplo: 'Yo veo televisión.'"
-    explicaciones_tiempo["presente 2"] += "<br><br>Ejemplo: 'Yo estoy viendo televisión.'"
-    explicaciones_tiempo["presente 3"] += "<br><br>Ejemplo: 'Yo suelo ver televisión.'"
-    explicaciones_tiempo["pasado experimentado 1"] += "<br><br>Ejemplo: 'Yo veía televisión.'"
-    explicaciones_tiempo["pasado experimentado 2"] += "<br><br>Ejemplo: 'Yo estaba viendo televisión.'"
-    explicaciones_tiempo["pasado experimentado 3"] += "<br><br>Ejemplo: 'Yo solía ver televisión.'"
-    explicaciones_tiempo["pasado no experimentado 1"] += "<br><br>Ejemplo: '(Dicen que) yo veía televisión.'"
-    explicaciones_tiempo["pasado no experimentado 2"] += "<br><br>Ejemplo: '(Dicen que) yo estaba viendo televisión.'"
-    explicaciones_tiempo["pasado no experimentado 3"] += "<br><br>Ejemplo: '(Dicen que) yo solía ver televisión.'"
+    explicaciones_tiempo["presente simple"] += "<br><br>Ejemplo: 'Yo veo televisión.'"
+    explicaciones_tiempo["presente progresivo"] += "<br><br>Ejemplo: 'Yo estoy viendo televisión.'"
+    explicaciones_tiempo["presente habitual"] += "<br><br>Ejemplo: 'Yo suelo ver televisión.'"
+    explicaciones_tiempo["pasado 1 simple"] += "<br><br>Ejemplo: 'Yo veía televisión.'"
+    explicaciones_tiempo["pasado 1 progresivo"] += "<br><br>Ejemplo: 'Yo estaba viendo televisión.'"
+    explicaciones_tiempo["pasado 1 habitual"] += "<br><br>Ejemplo: 'Yo solía ver televisión.'"
+    explicaciones_tiempo["pasado 2 simple"] += "<br><br>Ejemplo: '(Dicen que) yo veía televisión.'"
+    explicaciones_tiempo["pasado 2 progresivo"] += "<br><br>Ejemplo: '(Dicen que) yo estaba viendo televisión.'"
+    explicaciones_tiempo["pasado 2 habitual"] += "<br><br>Ejemplo: '(Dicen que) yo solía ver televisión.'"
     
     explicacion_tiempo_placeholder.markdown("**Explicación de tiempo seleccionado:** " + explicaciones_tiempo[tiempo], unsafe_allow_html=True)
         
