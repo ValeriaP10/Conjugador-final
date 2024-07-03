@@ -8,6 +8,7 @@ Created on Tue Jul  2 12:27:10 2024
 ## leemos el excel
 
 import pandas as pd
+import os
 
 verbos = pd.read_excel('verbos.xlsx')
 
@@ -244,6 +245,9 @@ else:
     
 ########### menú desplegable para seleccionar VERBOS #################
 
+    # Ruta donde se encuentran los archivos de audio
+    ruta_audio = "audio/"
+
     st.header('Verbo', divider='violet')
     
     base = st.selectbox(
@@ -254,6 +258,15 @@ else:
     
     if base.endswith('y'):
         base = base[:-1]
+        
+    # Nombre del archivo de audio
+    nombre_audio = base + ".mp3"
+    ruta_completa_audio = os.path.join(ruta_audio, nombre_audio)
+    
+    if os.path.exists(ruta_completa_audio):
+        st.audio(ruta_completa_audio)
+    else:
+        st.warning(f"No se encontró archivo de audio para el verbo '{base}'.")
 
 ############## menú desplegable para seleccionar NUMERO ##############
 
