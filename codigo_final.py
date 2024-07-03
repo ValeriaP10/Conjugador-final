@@ -246,15 +246,15 @@ def style_button(variedad, current_variedad):
 
 col1, col2, col3 = st.columns(3)
 with col1:
-    if st.button("Ayacucho", key="ayacucho_btn", help="Selecciona la variedad Ayacucho", 
+    if st.button("Ayacucho", key="ayacucho_btn", 
                  on_click=lambda: st.session_state.update({'variedad': "Ayacucho"})):
         st.session_state['variedad'] = "Ayacucho"
 with col2:
-    if st.button("Cuzco", key="cuzco_btn", help="Selecciona la variedad Cuzco", 
+    if st.button("Cuzco", key="cuzco_btn",  
                  on_click=lambda: st.session_state.update({'variedad': "Cuzco"})):
         st.session_state['variedad'] = "Cuzco"
 with col3:
-    if st.button("Ancash", key="ancash_btn", help="Selecciona la variedad Ancash", 
+    if st.button("Ancash", key="ancash_btn",  
                  on_click=lambda: st.session_state.update({'variedad': "Ancash"})):
         st.session_state['variedad'] = "Ancash"
 
