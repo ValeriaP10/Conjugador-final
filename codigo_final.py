@@ -178,7 +178,7 @@ dict_que_esp = dict(zip(quechua,espanol))
 
 import streamlit as st
 
-################## TEMA #####################
+################################### TEMA ######################################
 
 page_bg_img = """
 <style>
@@ -221,7 +221,7 @@ st.write("""
 <div style="text-align: justify">
 Esta página web tiene el objetivo de crear conjugaciones de los verbos quechuas más comunes. Al seleccionar una variedad de la lengua, un verbo, un número, una persona y un tiempo, se podrá obtener la forma conjugada de dicho verbo con los sufijos correspondientes. Se ofrecen también explicaciones para algunos conceptos de persona y tiempo verbal que pueden resultar confusos. ¡Anímate a conocer más sobre el quechua! 😄
 </div>
-<br><br>
+<br>
 """, unsafe_allow_html=True)
 
 ################################# VARIEDAD ####################################
@@ -378,13 +378,13 @@ else:
     <div style="text-align: justify">
     Si deseas conocer con mayor profundidad las variedades del quechua aquí presentadas, haz click en los siguientes para ver las gramáticas usadas en la creación de esta página web: 
     </div>
-    <br><br>
+    <br>
     """, unsafe_allow_html=True)
 
-    st.page_link("https://repositorio.pucp.edu.pe/index/bitstream/handle/123456789/134454/Qayna%2c%20kunan%2c%20paqarin.%20Una%20introducci%c3%b3n%20pr%c3%a1ctica%20al%20quechua%20chanca.pdf?sequence=1&isAllowed=y", label="Quechua de Ayacucho", icon="1️⃣")
-    st.page_link("https://theswissbay.ch/pdf/Books/Linguistics/Mega%20linguistics%20pack/South%20American/Quechuan%20%26%20Aymaran/Quechua%2C%20Gramatica%20-%20Cuzco-Collao%20%28Cusihuam%C3%A1n%29.pdf", label="Quechua de Cuzco 1", icon="2️⃣")
-    st.page_link("https://repositorio.perueduca.pe/recursos/2022/DEIB22-0568.pdf", label="Quechua de Cuzco 2", icon="3️⃣")
-    st.page_link("https://dokumen.pub/gramatica-quechua-ancash-huailas.html", label="Quechua de Áncash", icon="4️⃣")
+    st.page_link("https://repositorio.pucp.edu.pe/index/bitstream/handle/123456789/134454/Qayna%2c%20kunan%2c%20paqarin.%20Una%20introducci%c3%b3n%20pr%c3%a1ctica%20al%20quechua%20chanca.pdf?sequence=1&isAllowed=y", label=" Quechua de Ayacucho", icon="1️⃣")
+    st.page_link("https://theswissbay.ch/pdf/Books/Linguistics/Mega%20linguistics%20pack/South%20American/Quechuan%20%26%20Aymaran/Quechua%2C%20Gramatica%20-%20Cuzco-Collao%20%28Cusihuam%C3%A1n%29.pdf", label=" Quechua de Cuzco 1", icon="2️⃣")
+    st.page_link("https://repositorio.perueduca.pe/recursos/2022/DEIB22-0568.pdf", label=" Quechua de Cuzco 2", icon="3️⃣")
+    st.page_link("https://dokumen.pub/gramatica-quechua-ancash-huailas.html", label=" Quechua de Áncash", icon="4️⃣")
 
 #   st.link_button("Quechua de Ayacucho", "https://repositorio.pucp.edu.pe/index/bitstream/handle/123456789/134454/Qayna%2c%20kunan%2c%20paqarin.%20Una%20introducci%c3%b3n%20pr%c3%a1ctica%20al%20quechua%20chanca.pdf?sequence=1&isAllowed=y")
 #   st.link_button("Quechua de Cuzco 1", "https://theswissbay.ch/pdf/Books/Linguistics/Mega%20linguistics%20pack/South%20American/Quechuan%20%26%20Aymaran/Quechua%2C%20Gramatica%20-%20Cuzco-Collao%20%28Cusihuam%C3%A1n%29.pdf")
