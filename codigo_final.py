@@ -375,9 +375,8 @@ else:
     st.header('Recursos', divider='violet')
     
     st.write("""
-    <br>
     <div style="text-align: justify">
-    Si deseas conocer con mayor profundidad las variedades del quechua aquí presentadas, puedes encontrar enlaces en los siguientes botones que te llevarán a las gramáticas usadas en la creación de esta página web: 
+    Si deseas conocer con mayor profundidad las variedades del quechua aquí presentadas, haz click en los siguientes para ver las gramáticas usadas en la creación de esta página web: 
     </div>
     <br><br>
     """, unsafe_allow_html=True)
