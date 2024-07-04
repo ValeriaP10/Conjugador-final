@@ -376,7 +376,7 @@ else:
     
     st.write("""
     <div style="text-align: justify">
-    Si deseas conocer más sobre las variedades del quechua presentadas, puede hacer click en los siguientes enlaces para ver las gramáticas usadas en la creación de esta página web: 
+    Si deseas conocer más sobre las variedades del quechua presentadas, puedes hacer click en los siguientes enlaces para ver las gramáticas usadas en la creación de esta página web: 
     </div>
     <br>
     """, unsafe_allow_html=True)
