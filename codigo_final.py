@@ -194,7 +194,7 @@ background-color: rgba(0, 0, 0, 0);
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
-########### TÍTULO #############
+##################################### TÍTULO ##################################
 
 st.image('machu_picchu_header.jpg')
 
@@ -224,7 +224,7 @@ Esta página web tiene el objetivo de crear conjugaciones de los verbos quechuas
 <br><br>
 """, unsafe_allow_html=True)
 
-################# boton para seleccionar la VARIEDAD #################
+################################# VARIEDAD ####################################
 
 # Inicializar session_state
 if 'variedad' not in st.session_state:
@@ -241,8 +241,8 @@ with col2:
     if st.button("Cuzco"):
         st.session_state['variedad'] = "Cuzco"
 with col3:
-    if st.button("Ancash"):
-        st.session_state['variedad'] = "Ancash"
+    if st.button("Áncash"):
+        st.session_state['variedad'] = "Áncash"
 
 if not st.session_state['variedad']:
     st.warning("Por favor, seleccione una variedad del quechua.")
@@ -274,7 +274,7 @@ else:
     if base.endswith('y'):
         base = base[:-1]
         
-############## menú desplegable para seleccionar NUMERO ##############
+################################## NUMERO #####################################
 
     st.header('Número', divider='violet')
     
@@ -306,7 +306,7 @@ else:
         "pasado 2 habitual": "Este tiempo se usa para describir acciones que ocurrían regularmente en el pasado sin la participación o el conocimiento directo del hablante."
     }
 
-###### menú desplegable para seleccionar PERSONA ######
+##################################### PERSONA #################################
 
     st.header('Persona', divider='violet')
     
@@ -318,7 +318,7 @@ else:
     explicacion_persona_placeholder.markdown("**Explicación de persona seleccionada:** " + explicaciones_persona[persona], unsafe_allow_html=True)
 
 
-#################### menú desplegable para seleccionar TIEMPO ###################
+###################################### TIEMPO #################################
 
     st.header('Tiempo', divider='violet')
     
@@ -382,7 +382,12 @@ else:
     <br><br>
     """, unsafe_allow_html=True)
 
-    st.link_button("Quechua de Ayacucho", "https://repositorio.pucp.edu.pe/index/bitstream/handle/123456789/134454/Qayna%2c%20kunan%2c%20paqarin.%20Una%20introducci%c3%b3n%20pr%c3%a1ctica%20al%20quechua%20chanca.pdf?sequence=1&isAllowed=y")
-    st.link_button("Quechua de Cuzco 1", "https://theswissbay.ch/pdf/Books/Linguistics/Mega%20linguistics%20pack/South%20American/Quechuan%20%26%20Aymaran/Quechua%2C%20Gramatica%20-%20Cuzco-Collao%20%28Cusihuam%C3%A1n%29.pdf")
-    st.link_button("Quechua de Cuzco 2", "https://repositorio.perueduca.pe/recursos/2022/DEIB22-0568.pdf")
-    st.link_button("Quechua de Áncash", "https://dokumen.pub/gramatica-quechua-ancash-huailas.html") 
+    st.page_link("https://repositorio.pucp.edu.pe/index/bitstream/handle/123456789/134454/Qayna%2c%20kunan%2c%20paqarin.%20Una%20introducci%c3%b3n%20pr%c3%a1ctica%20al%20quechua%20chanca.pdf?sequence=1&isAllowed=y", label="Quechua de Ayacucho", icon="1️⃣")
+    st.page_link("https://theswissbay.ch/pdf/Books/Linguistics/Mega%20linguistics%20pack/South%20American/Quechuan%20%26%20Aymaran/Quechua%2C%20Gramatica%20-%20Cuzco-Collao%20%28Cusihuam%C3%A1n%29.pdf", label="Quechua de Cuzco 1", icon="2️⃣")
+    st.page_link("https://repositorio.perueduca.pe/recursos/2022/DEIB22-0568.pdf", label="Quechua de Cuzco 2", icon="3️⃣")
+    st.page_link("https://dokumen.pub/gramatica-quechua-ancash-huailas.html", label="Quechua de Áncash", icon="4️⃣")
+
+#   st.link_button("Quechua de Ayacucho", "https://repositorio.pucp.edu.pe/index/bitstream/handle/123456789/134454/Qayna%2c%20kunan%2c%20paqarin.%20Una%20introducci%c3%b3n%20pr%c3%a1ctica%20al%20quechua%20chanca.pdf?sequence=1&isAllowed=y")
+#   st.link_button("Quechua de Cuzco 1", "https://theswissbay.ch/pdf/Books/Linguistics/Mega%20linguistics%20pack/South%20American/Quechuan%20%26%20Aymaran/Quechua%2C%20Gramatica%20-%20Cuzco-Collao%20%28Cusihuam%C3%A1n%29.pdf")
+#   st.link_button("Quechua de Cuzco 2", "https://repositorio.perueduca.pe/recursos/2022/DEIB22-0568.pdf")
+#   st.link_button("Quechua de Áncash", "https://dokumen.pub/gramatica-quechua-ancash-huailas.html") 
