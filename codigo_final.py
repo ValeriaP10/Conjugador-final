@@ -241,8 +241,8 @@ with col2:
     if st.button("Cuzco"):
         st.session_state['variedad'] = "Cuzco"
 with col3:
-    if st.button("Áncash"):
-        st.session_state['variedad'] = "Áncash"
+    if st.button("Ancash"):
+        st.session_state['variedad'] = "Ancash"
 
 if not st.session_state['variedad']:
     st.warning("Por favor, seleccione una variedad del quechua.")
