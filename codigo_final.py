@@ -219,7 +219,7 @@ st.markdown(
 st.write("""
 <br>
 <div style="text-align: justify">
-Esta página web tiene el objetivo de crear conjugaciones de los verbos quechuas más comunes. Al seleccionar una variedad de la lengua, un verbo, un número, una persona y un tiempo, se podrá obtener la forma conjugada de dicho verbo con los sufijos correspondientes. Se ofrecen también explicaciones para algunos conceptos de persona y tiempo verbal que pueden resultar confusos. ¡Anímate a conocer más sobre el quechua! 😄
+Esta página web tiene el objetivo de crear conjugaciones de los verbos quechuas más comunes. Al seleccionar una variedad de la lengua, un verbo, un número, una persona y un tiempo, se podrá obtener la forma conjugada de dicho verbo con los sufijos correspondientes. Se ofrecen también explicaciones para algunos conceptos de persona y tiempo verbal que pueden resultar confusos y algunos audios con las pronunciaciones de las formas conjugadas. ¡Anímate a conocer más sobre el quechua! 😄
 </div>
 <br>
 """, unsafe_allow_html=True)
